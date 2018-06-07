@@ -8,7 +8,7 @@ for i in range(len(log_suffixes)):
     suffix = log_suffixes[i]
     num_classes, num_train_per_class, batch_size = None, None, None
     start1 = suffix.find('_') + 1
-    end1 = suffix.find('0_')
+    end1 = suffix.find('0_') + 1
     start2 = end1 + 1
     end2 = suffix.rfind('0_') + 1
     start3 = end2 + 1
@@ -45,16 +45,19 @@ for i in range(len(log_suffixes)):
                 val_acc_top1.append(None)
                 val_acc_top5.append(None)
                 count_acc += 1
-    print("HI")
+    print("Start plotting")
     # print(len(loss))
     # print(train_acc)
     # print(val_acc_top1)
     # print(val_acc_top5)
-    plotter = LossAccPlotter(title='Loss and Accuracy Plotted Using ' + num_classes + ' Keywords (' + num_train_per_class + ' training videos each) and minibatch size of ' + batch_size, save_to_filepath=num_classes + '_' + num_train_per_class + '_' + batch_size + '.png', show_regressions=False, show_averages=False, show_loss_plot=True, show_acc_plot=True, show_plot_window=True, x_label="Epoch")
+
+    plot_title = 'Loss and Accuracy Plotted Using ' + num_classes + ' Keywords (' + num_train_per_class + ' training videos each) and minibatch size of ' + batch_size, save_to_filepath=num_classes + '_' + num_train_per_class + '_' + batch_size + '.png'
+    
+    plotter = LossAccPlotter(title=plot_title, save_to_filepath=num_classes + '_' + num_train_per_class + '_' + batch_size + '.png', show_regressions=False, show_averages=False, show_loss_plot=True, show_acc_plot=True, show_plot_window=True, x_label="Epoch")
             
     for epoch in range(len(loss)):
         plotter.add_values(epoch, loss_train = loss[epoch], acc_train = train_acc[epoch], acc_val = val_acc_top1[epoch])
-            
+        
     plotter.block()
             
-    print("HI AGAIN")
+    print("Finished plotting")
