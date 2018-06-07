@@ -51,8 +51,7 @@ for i in range(len(log_suffixes)):
     # print(val_acc_top1)
     # print(val_acc_top5)
 
-    plot_title = 'Loss and Accuracy Plotted Using ' + num_classes + ' Keywords (' + num_train_per_class + ' training videos each) and minibatch size of ' + batch_size, save_to_filepath=num_classes + '_' + num_train_per_class + '_' + batch_size + '.png'
-    
+    plot_title = 'Loss and Accuracy Plotted Using ' + num_classes + ' Keywords (' + num_train_per_class + ' training videos each) and minibatch size of ' + batch_size    
     plotter = LossAccPlotter(title=plot_title, save_to_filepath=num_classes + '_' + num_train_per_class + '_' + batch_size + '.png', show_regressions=False, show_averages=False, show_loss_plot=True, show_acc_plot=True, show_plot_window=True, x_label="Epoch")
             
     for epoch in range(len(loss)):
